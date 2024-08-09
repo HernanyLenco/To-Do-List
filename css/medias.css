@@ -14,5 +14,9 @@ Grandes telas: 1201px and more
     main {
         width: 745px;
     }
+
+    div.body {
+        overflow: auto;
+    }
     
 }
