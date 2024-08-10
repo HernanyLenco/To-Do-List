@@ -17,6 +17,7 @@ html {
 body {
   background-color: #e7e5e4;
   display: flex;
+  gap: 10px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -25,6 +26,7 @@ body {
 main {
   width: 90vw;
   height: 80vh;
+  position: relative;
   background-color: #1B1A17;
   display: flex;
   flex-direction: column;
@@ -32,6 +34,84 @@ main {
   align-items: center;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+dialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.541);
+}
+
+dialog {
+  width: 400px;
+  height: 200px;
+  background-color: #1F1E1B;
+  border: 2px solid #ff8303;
+  border-radius: 10px;
+  box-shadow: 0 0 1em rgba(0, 0, 0 / 0.5);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+dialog > h2 {
+  width: 100%;
+  height: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #FFf;
+  font-size: 1.5em;
+  font-weight: 600;
+}
+
+dialog > form.inputs-modal {
+  width: 100%;
+  height: 40%;
+  display: flex;
+  gap: 15px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+dialog > form.inputs-modal > input[type="text"] {
+  width: 70%;
+  height: 30%;
+  border: 2px solid #ff8303;
+  background-color: #1F1E1B;
+  padding: 15px;
+  border-radius: 10px;
+  font-size: 1em;
+  font-weight: 600;
+  color: #FFf;
+  outline: none;
+}
+
+dialog > div.modal-btns {
+  width: 100%;
+  height: 40%;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+}
+dialog > div.modal-btns > button {
+  width: 100px;
+  height: 40px;
+  border-radius: 10px;
+  border: 2px solid #ff8303;
+  background-color: #000;
+  color: #fff;
+  font-size: 1.2em;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.5s;
+}
+
+dialog > div.modal-btns > button:hover {
+  background-color: #ff8303;
+  color: #000;
+  transform: scale(1.1);
 }
 
 div.header {

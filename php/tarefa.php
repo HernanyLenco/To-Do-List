@@ -52,25 +52,64 @@ class Tarefa
 
     public function delete()
     {
-        $query = "DELETE FROM tarefaslist WHERE id = $this->id";
+        $this->id = (int)$_GET['id'];
+        $query = "DELETE FROM tarefas WHERE id = $this->id";
+        $this->conn->query($query);
+
+        header('Location: ../index.php');
     }
 
     public function update()
     {
+        $this->id = (int)$_GET['id'];
+        $this->titulo = $_POST['setTitulo'];
+        $this->descricao = $_POST['setDescricao'];
         $query = "UPDATE tarefas SET titulo = '$this->titulo', descricao = '$this->descricao' WHERE id = $this->id";
+        $this->conn->query($query);
+        header('Location: ../index.php');
     }
 }
 
-if (isset($_POST['titulo']) && isset($_POST['descricao'])) {
+function CreateTask()
+{
 
-    $tarefa = new Tarefa(new Conexao(), $_POST['titulo'], $_POST['descricao']);
+    if (isset($_POST['titulo']) && isset($_POST['descricao'])) {
 
-    $tarefa->create();
+        $tarefa = new Tarefa(new Conexao(), $_POST['titulo'], $_POST['descricao']);
+
+        $tarefa->create();
+    }
 }
 
-if (isset($_GET['id'])) {
-    $tarefa = new Tarefa(new Conexao(), '', '');
-    $tarefa->toggleStatus();
+CreateTask();
 
-    /* header('Location: ../index.php'); */
+function toggleStatus()
+{
+    if (isset($_GET['id']) && isset($_GET['estado']) == 'true') {
+        $tarefa = new Tarefa(new Conexao(), '', '');
+        $tarefa->toggleStatus();
+
+        /* header('Location: ../index.php'); */
+    }
 }
+
+toggleStatus();
+
+function deleteTask()
+{
+    if (isset($_GET['id']) && isset($_GET['delete']) == 'true') {
+        $tarefa = new Tarefa(new Conexao(), '', '');
+        $tarefa->delete();
+    }
+}
+
+deleteTask();
+
+function updateTask() {
+    if (isset($_GET['id']) && isset($_GET['update']) == 'true') {
+        $tarefa = new Tarefa(new Conexao(), '', '');
+        $tarefa->update();
+    }
+}
+
+updateTask();

@@ -25,6 +25,7 @@
 
 <body>
   <h1>Lista De Tarefas</h1>
+  <p>Desenvolvido Por @Hernani Lenço</p>
   <main>
     <div class="header">
       <form class="inputs" id="form" method="post" action="./php/tarefa.php">
@@ -46,12 +47,23 @@
         </div>
         <div class="task-btns">
           <button id="btn-status" onclick="mudarEstado(<?=$tarefa['id']?>)"><i class="fa-solid fa-check"></i></button>
-          <button id="btn-remove"><i class="fa-solid fa-xmark"></i></button>
-          <button id="btn-update"><i class="fa-solid fa-pen"></i></button>
+          <button id="btn-remove" onclick="deleteTask(<?=$tarefa['id']?>)" ><i class="fa-solid fa-xmark"></i></button>
+          <button id="btn-update" onclick="upModal()"><i class="fa-solid fa-pen"></i></button>
         </div>
       </div>
       <?php } ?>
     </div>
+    <dialog class="modal">
+      <h2>Editar Tarefa</h2>
+    <form class="inputs-modal" id="form-modal" method="post" action="./php/tarefa.php?id=<?=$tarefa['id']?>&update=true">
+        <input type="text" id="modal-title" name="setTitulo" placeholder="Novo Titulo" required/>
+        <input type="text" id="modal-description" name="setDescricao" placeholder="Nova Descrição..." required/>
+      </form>
+      <div class="modal-btns">
+        <button type="submit" id="updateTask" form="form-modal">Salvar</button>
+        <button id="btn-cancel">Cancelar</button>
+      </div>
+    </dialog>
   </main>
   <script src="js/index.js"></script>
 </body>
