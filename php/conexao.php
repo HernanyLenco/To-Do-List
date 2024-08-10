@@ -20,11 +20,8 @@ class Conexao
             return $conn;
 
             echo 'Conectado com sucesso!';
-
         } catch (PDOException $e) {
             echo '<p>' . $e->getMessage() . '</p>';
         }
     }
 }
-
-

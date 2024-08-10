@@ -105,7 +105,8 @@ function deleteTask()
 
 deleteTask();
 
-function updateTask() {
+function updateTask()
+{
     if (isset($_GET['id']) && isset($_GET['update']) == 'true') {
         $tarefa = new Tarefa(new Conexao(), '', '');
         $tarefa->update();

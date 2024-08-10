@@ -21,5 +21,4 @@ function upModal() {
   btnClose.addEventListener("click", function () {
     modal.close();
   });
-
 }
